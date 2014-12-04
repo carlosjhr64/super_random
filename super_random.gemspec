@@ -26,12 +26,11 @@ SUMMARY
 
   s.require_paths = ["lib"]
   s.files = %w(
-History.txt
 README.rdoc
-TODO.txt
 lib/super_random.rb
 lib/super_random/super_random.rb
 lib/super_random/version.rb
+super_random.gemspec
   )
 
   s.requirements << 'ruby: ruby 2.1.3p242 (2014-09-19 revision 47630) [x86_64-linux]'

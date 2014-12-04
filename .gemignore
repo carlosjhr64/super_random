@@ -2,6 +2,6 @@
  (\.)|
  (test\/)|
  (TODO\.)|
- (super_randomj.gemspec)|
+ (super_random.gemspec)|
  (History\.)
 )
