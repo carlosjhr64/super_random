@@ -32,6 +32,7 @@ lib/super_random/super_random.rb
 lib/super_random/version.rb
   )
 
+  s.add_runtime_dependency 'realrand', '~> 2.0', '>= 2.0.1'
   s.requirements << 'ruby: ruby 2.1.3p242 (2014-09-19 revision 47630) [x86_64-linux]'
 
 end
