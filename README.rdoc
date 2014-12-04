@@ -19,7 +19,7 @@ SuperRandom combines RealRand's three online real random services to create a mo
    # hexadecimal returns a 32 bytes hexadecimal by default.
    super_random.hexadecimal #=> "2ae...37b"
 
-   # rand as the tipical use
+   # rand as the typical use
    super_random.rand #=> 0.16882225652425537
    super_random.rand(100) #=> 85
 
