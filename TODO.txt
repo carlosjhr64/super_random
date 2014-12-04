@@ -1,3 +1,5 @@
+RealRand did not show up in gemspecs' requirements.
+
 == File List
 
 
