@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name     = 'super_random'
-  s.version  = '0.0.0'
+  s.version  = '0.0.1'
 
   s.homepage = 'https://github.com/carlosjhr64/super_random'
 
