@@ -1,0 +1,7 @@
+^(
+ (\.)|
+ (test\/)|
+ (TODO\.)|
+ (super_randomj.gemspec)|
+ (History\.)
+)
