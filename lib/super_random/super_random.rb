@@ -41,7 +41,7 @@ class SuperRandom
       end
     end
 
-    a = n.times.inject([]){|a,i|a.push(SecureRandom.random_number(256))}
+    a = n.times.inject([]){|b,i|b.push(SecureRandom.random_number(256))}
 
     [a1, a2, a3].each do |b|
       if b
