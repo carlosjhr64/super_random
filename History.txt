@@ -3,3 +3,5 @@
 93065b089944456e41307fb95063c529  pkg/super_random-0.0.0.gem
 === 0.0.1 / 2014-12-04 14:29:19 -0800
 aa50c24135172cd90c9600bc65c5f299  pkg/super_random-0.0.1.gem
+=== 0.0.2 / 2014-12-07 12:45:56 -0800
+23c2646dc46071f8a9ff616a3a93b85b  pkg/super_random-0.0.2.gem
