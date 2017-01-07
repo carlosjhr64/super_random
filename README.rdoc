@@ -23,10 +23,10 @@ SuperRandom combines RealRand's three online real random services to create a mo
    super_random.rand #=> 0.16882225652425537
    super_random.rand(100) #=> 85
 
-   # The "randomness" attribute gives the number of online services used.
+   # The "services" attribute gives the number of online services used.
    # It's possible for a service to fail.
    # Ultimately, SuperRandom uses SecureRandom as a failsafe.
-   super_random.randomness #=> 3
+   super_random.services #=> 3
 
 == INSTALL:
 

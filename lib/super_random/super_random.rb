@@ -7,16 +7,20 @@ class SuperRandom
     return nil
   end
 
-  attr_accessor :first_timeout, :second_timeout, :length, :nevermind, :randomness
+  attr_accessor :first_timeout, :second_timeout, :nevermind
+  attr_reader :randomness, :services
+
   def initialize
     @first_timeout = 3
     @second_timeout = 6
     @nevermind = true
     @randomness = 0.0
+    @services = 0
   end
 
   def bytes(n=32)
     @randomness = 0.0
+    @services = 0
 
     r1 = RealRand::RandomOrg.new
     r2 = RealRand::EntropyPool.new
@@ -49,11 +53,11 @@ class SuperRandom
     end
 
     a = n.times.inject([]){|b,i|b.push(SecureRandom.random_number(256))}
-
     [a1, a2, a3].each do |b|
       if b
         bl = b.length
-        @randomness += 1.0/bl.to_f
+        @randomness += bl.to_f/n.to_f
+        @services += 1
         n.times{|i|a[i]=(a[i]+b[i%bl])%256}
       end
     end
