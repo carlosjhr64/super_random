@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.author   = 'carlosjhr64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2016-01-07'
+  s.date     = '2017-01-07'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
@@ -22,9 +22,9 @@ You can't get more random than random, but you can try really, really, really ha
 SUMMARY
 
   s.extra_rdoc_files = ['README.rdoc']
-  s.rdoc_options     = ["--main", "README.rdoc"]
+  s.rdoc_options     = ['--main', 'README.rdoc']
 
-  s.require_paths = ["lib"]
+  s.require_paths = ['lib']
   s.files = %w(
 README.rdoc
 lib/super_random.rb
