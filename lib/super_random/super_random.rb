@@ -1,7 +1,7 @@
 class SuperRandom
 
-  def self.randbyte(r,n,s)
-    return r.randbyte(n)
+  def self.randbyte(r,s)
+    return r.randbyte
   rescue Exception
     warn "RealRand's #{s} failed."
     return nil
@@ -12,11 +12,11 @@ class SuperRandom
     @first_timeout = 3
     @second_timeout = 6
     @nevermind = true
-    @randomness = 0
+    @randomness = 0.0
   end
 
   def bytes(n=32)
-    @randomness = 0
+    @randomness = 0.0
 
     r1 = RealRand::RandomOrg.new
     r2 = RealRand::EntropyPool.new
@@ -24,9 +24,9 @@ class SuperRandom
 
     a1 = a2 = a3 = nil
 
-    t1 = Thread.new{ a1 = SuperRandom.randbyte(r1,n,'RandomOrg') }
-    t2 = Thread.new{ a2 = SuperRandom.randbyte(r2,n,'EntropyPool') }
-    t3 = Thread.new{ a3 = SuperRandom.randbyte(r3,n,'FourmiLab') }
+    t1 = Thread.new{ a1 = SuperRandom.randbyte(r1,'RandomOrg')[0...n] }
+    t2 = Thread.new{ a2 = SuperRandom.randbyte(r2,'EntropyPool')[0...n] }
+    t3 = Thread.new{ a3 = SuperRandom.randbyte(r3,'FourmiLab')[0...n] }
 
     begin
       Timeout.timeout(@first_timeout) do
@@ -52,8 +52,9 @@ class SuperRandom
 
     [a1, a2, a3].each do |b|
       if b
-        @randomness += 1
-        n.times{|i|a[i]=(a[i]+b[i])%256}
+        bl = b.length
+        @randomness += 1.0/bl.to_f
+        n.times{|i|a[i]=(a[i]+b[i%bl])%256}
       end
     end
 
