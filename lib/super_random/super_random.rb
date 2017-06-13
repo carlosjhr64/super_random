@@ -1,7 +1,7 @@
 class SuperRandom
 
-  def self.randbyte(r,s)
-    return r.randbyte
+  def self.randbyte(r,n,s='randbyte')
+    return r.randbyte[0..n]
   rescue Exception
     warn "RealRand's #{s} failed."
     return nil
@@ -28,9 +28,9 @@ class SuperRandom
 
     a1 = a2 = a3 = nil
 
-    t1 = Thread.new{ a1 = SuperRandom.randbyte(r1,'RandomOrg')[0...n] }
-    t2 = Thread.new{ a2 = SuperRandom.randbyte(r2,'EntropyPool')[0...n] }
-    t3 = Thread.new{ a3 = SuperRandom.randbyte(r3,'FourmiLab')[0...n] }
+    t1 = Thread.new{ a1 = SuperRandom.randbyte(r1,n,'RandomOrg') }
+    t2 = Thread.new{ a2 = SuperRandom.randbyte(r2,n,'EntropyPool') }
+    t3 = Thread.new{ a3 = SuperRandom.randbyte(r3,n,'FourmiLab') }
 
     begin
       Timeout.timeout(@first_timeout) do
