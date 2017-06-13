@@ -9,3 +9,5 @@ aa50c24135172cd90c9600bc65c5f299  pkg/super_random-0.0.1.gem
 3d310b89caf1fac5237def5ae7328b16  pkg/super_random-0.0.3.gem
 === 0.1.0 / 2017-01-07 08:40:16 -0800
 0db7d72865bbaf2836178fed015fdd92  pkg/super_random-0.1.0.gem
+=== 0.2.0 / 2017-06-13 08:58:42 -0700
+4b41e844f32bcb661227977cedd01912  pkg/super_random-0.2.0.gem
