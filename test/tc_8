@@ -1,0 +1,14 @@
+#! ruby
+require 'test/unit'
+require 'super_random'
+
+class TestSuperRandom < Test::Unit::TestCase
+  def test_8
+    super_random = SuperRandom.new
+
+    bytes = super_random.bytes(8)
+    assert_equal 8, bytes.length, 'Number of  bytes:'
+    assert_equal 4, super_random.services, 'Number of services:'
+    assert_equal 4.0, super_random.randomness, 'Measure of "hyper" radomness:'
+  end
+end

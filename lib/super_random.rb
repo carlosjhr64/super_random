@@ -1,12 +1,14 @@
+class SuperRandom
+  VERSION = '1.0.0'
+end
+
 # Standard Libraries
 require 'timeout'
 require 'securerandom'
-
-# Helper Gem
-require 'random/online'
+require 'net/http'
+require 'json'
 
 # This Gem
-require 'super_random/version.rb'
 require 'super_random/super_random.rb'
 
 # Requires:

@@ -6,7 +6,7 @@
 
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines RealRand's three online real random services to create a more perfect random byte.
+SuperRandom combines four online real random services to create a more perfect random byte.
 
 == SYNOPSIS:
 
@@ -36,7 +36,7 @@ SuperRandom combines RealRand's three online real random services to create a mo
 
 (The MIT License)
 
-Copyright (c) 2014 carlosjhr64
+Copyright (c) 2017 carlosjhr64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
