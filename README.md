@@ -1,38 +1,39 @@
-= super_random
+# SuperRandom
 
-{<img src="https://badge.fury.io/rb/super_random.svg" alt="Gem Version" />}[http://badge.fury.io/rb/super_random]
+* [github](https://www.github.com/carlosjhr64/super_random)
+* [rubygems](https://rubygems.org/gems/super_random)
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 You can't get more random than random, but you can try really, really, really hard.
 
 SuperRandom combines four online real random services to create a more perfect random byte.
 
-== SYNOPSIS:
+## SYNOPSIS:
 
-   require 'super_random' #=> true
-   super_random = SuperRandom.new # => #<SuperRandom:...
+    require 'super_random' #=> true
+    super_random = SuperRandom.new # => #<SuperRandom:...
 
-   # bytes returns 32 bytes by default (256 bits).
-   super_random.bytes # => [123, 219, 128, ...,  248, 164, 100]
+    # bytes returns 32 bytes by default (256 bits).
+    super_random.bytes # => [123, 219, 128, ...,  248, 164, 100]
 
-   # hexadecimal returns a 32 bytes hexadecimal by default.
-   super_random.hexadecimal #=> "2ae...37b"
+    # hexadecimal returns a 32 bytes hexadecimal by default.
+    super_random.hexadecimal #=> "2ae...37b"
 
-   # rand as the typical use
-   super_random.rand #=> 0.16882225652425537
-   super_random.rand(100) #=> 85
+    # rand as the typical use
+    super_random.rand #=> 0.16882225652425537
+    super_random.rand(100) #=> 85
 
-   # The "services" attribute gives the number of online services used.
-   # It's possible for a service to fail.
-   # Ultimately, SuperRandom uses SecureRandom as a failsafe.
-   super_random.services #=> 3
+    # The "services" attribute gives the number of online services used.
+    # It's possible for a service to fail.
+    # Ultimately, SuperRandom uses SecureRandom as a failsafe.
+    super_random.services #=> 3
 
-== INSTALL:
+## INSTALL:
 
-  $ sudo gem install super_random
+    $ sudo gem install super_random
 
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 

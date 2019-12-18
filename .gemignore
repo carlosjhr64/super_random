@@ -1,7 +1,9 @@
 ^(
  (\.)|
+ (examples\/)|
  (test\/)|
+ (features\/)|
  (TODO\.)|
- (super_random.gemspec)|
+ (\w+\.gemspec)|
  (History\.)
 )
