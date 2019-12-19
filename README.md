@@ -7,7 +7,7 @@
 
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines four online real random services to create a more perfect random byte.
+SuperRandom combines five online real random services to create a more perfect random byte.
 
 ## SYNOPSIS:
 
@@ -27,11 +27,11 @@ SuperRandom combines four online real random services to create a more perfect r
     # The "services" attribute gives the number of online services used.
     # It's possible for a service to fail.
     # Ultimately, SuperRandom uses SecureRandom as a failsafe.
-    super_random.services #=> 3
+    super_random.services #=> 5
 
 ## INSTALL:
 
-    $ sudo gem install super_random
+    $ gem install super_random
 
 ## LICENSE:
 
