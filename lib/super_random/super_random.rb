@@ -1,29 +1,35 @@
 class SuperRandom
 
+  # http://qrng.anu.edu.au/index.php
+  # https://qrng.anu.edu.au/API/api-demo.php
   def self.quantum(n)
     s = Net::HTTP.get(URI(
       "https://qrng.anu.edu.au/API/jsonI.php?length=#{n}&type=uint8"))
     a = JSON.parse(s)['data']
     raise unless a.is_a?(Array) and a.length==n
-    raise unless a.all?{|i| i.is_a?(Integer) and i>-1 and i<256}
+    raise unless a.all?{|i| i.is_a?(Integer) and i.between?(0,255)}
     return a
   rescue StandardError
     warn "quantum (qrng.anu.edu.au) failed."
     return nil
   end
 
+  # https://www.random.org/
+  # https://www.random.org/integers/
   def self.atmospheric(n)
     s = Net::HTTP.get(URI(
       "https://www.random.org/integers/?num=#{n}&min=0&max=255&col=1&base=10&format=plain&rnd=new"))
     a = s.strip.split(/\s+/).map{|j|j.to_i}
     raise unless a.length==n
-    raise unless a.all?{|i| i>-1 and i<256}
+    raise unless a.all?{|i| i.between?(0,255)}
     return a
   rescue StandardError
     warn "atmospheric (www.random.org) failed."
     return nil
   end
 
+  # http://random.hd.org/
+  # http://random.hd.org/getBits.jsp
   def self.entropy_pool(n)
     s = Net::HTTP.get(URI(
       "http://random.hd.org/getBits.jsp?numBytes=#{n}&type=bin"))
@@ -36,6 +42,7 @@ class SuperRandom
     return nil
   end
 
+  # https://www.fourmilab.ch/hotbits/
   def self.hotbits(n, k='Pseudorandom')
     s = Net::HTTP.get(URI(
       "https://www.fourmilab.ch/cgi-bin/Hotbits.api?nbytes=#{n}&fmt=bin&apikey=#{k}"))
@@ -44,6 +51,18 @@ class SuperRandom
     return a
   rescue StandardError
     warn "hotbits (www.fourmilab.ch) failed."
+    return nil
+  end
+
+  # http://www.randomnumbers.info
+  def self.quantis(n)
+    s = Net::HTTP.get(URI(
+      "http://www.randomnumbers.info/cgibin/wqrng.cgi?amount=#{n}&limit=255"))
+    a = s.scan( /\s\d\d?\d?\b/ ).map{|i| i.to_i}
+    raise unless a.length == n and a.all?{|i| i.between?(0,255)}
+    return a
+  rescue
+    warn "quantis (www.randomnumbers.info) failed."
     return nil
   end
 
@@ -62,25 +81,25 @@ class SuperRandom
     @randomness = 0.0
     @services = 0
 
-    a1 = a2 = a3 = a4 = nil
+    a1 = a2 = a3 = a4 = a5 = nil
 
     t1 = Thread.new{ a1 = SuperRandom.quantum(n)}
     t2 = Thread.new{ a2 = SuperRandom.atmospheric(n)}
     t3 = Thread.new{ a3 = SuperRandom.entropy_pool(n)}
     t4 = Thread.new{ a4 = SuperRandom.hotbits(n)}
+    t5 = Thread.new{ a5 = SuperRandom.quantis(n)}
 
     begin
       Timeout.timeout(@first_timeout) do
         # Initially, would like to get them all.
-        t1.join and t2.join and t3.join and t4.join
+        t1.join and t2.join and t3.join and t4.join and t5.join
       end
     rescue Timeout::Error
       begin
         Timeout.timeout(@second_timeout) do
           # But at this point,
           # would like to get at least one.
-          while a1.nil? and a2.nil? and a3.nil? and a4.nil?
-              (t1.alive? or t2.alive? or t3.alive? or t4.alive?)
+          while [a1,a2,a3,a4,a5].all?{|a|a.nil?} and [t1,t2,t3,t4,t5].any?{|t|t.alive?}
             Thread.pass
           end
         end
@@ -91,7 +110,7 @@ class SuperRandom
     end
 
     a = n.times.inject([]){|b,i|b.push(SecureRandom.random_number(256))}
-    [a1, a2, a3, a4].each do |b|
+    [a1, a2, a3, a4, a5].each do |b|
       if b
         bl = b.length
         @randomness += bl.to_f/n.to_f
