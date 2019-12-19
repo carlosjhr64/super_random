@@ -5,10 +5,10 @@ require 'super_random'
 class TestSuperRandom < Test::Unit::TestCase
   def test_32
     super_random = SuperRandom.new
-
+    sleep 1.0 # rate limiting...
     bytes = super_random.bytes
     assert_equal 32, bytes.length, 'Default number of  bytes:'
-    assert_equal 4, super_random.services, 'Number of services:'
-    assert_equal 3.25, super_random.randomness, 'Measure of "hyper" radomness:'
+    assert_equal 5, super_random.services, 'Number of services:'
+    assert_equal 4.25, super_random.randomness, 'Measure of "hyper" radomness:'
   end
 end

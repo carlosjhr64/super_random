@@ -1,0 +1,10 @@
+#! ruby
+require 'test/unit'
+require 'super_random'
+
+class TestVersion < Test::Unit::TestCase
+  def test_version
+    version = '1.0.0'
+    assert_equal version, SuperRandom::VERSION
+  end
+end
