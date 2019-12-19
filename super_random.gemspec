@@ -8,29 +8,26 @@ Gem::Specification.new do |s|
   s.author   = 'carlosjhr64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2017-08-22'
+  s.date     = '2019-12-18'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines four online real random services to create a more perfect random byte.
+SuperRandom combines five online real random services to create a more perfect random byte.
 DESCRIPTION
 
   s.summary = <<SUMMARY
 You can't get more random than random, but you can try really, really, really hard.
 SUMMARY
 
-  s.extra_rdoc_files = ['README.rdoc']
-  s.rdoc_options     = ['--main', 'README.rdoc']
-
   s.require_paths = ['lib']
   s.files = %w(
-README.rdoc
+README.md
 lib/super_random.rb
 lib/super_random/super_random.rb
   )
 
-  s.requirements << 'ruby: ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]'
+  s.requirements << 'ruby: ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]'
 
 end
