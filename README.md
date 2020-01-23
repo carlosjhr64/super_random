@@ -1,6 +1,7 @@
 # SuperRandom
 
-* [github](https://www.github.com/carlosjhr64/super_random)
+* [VERSION 1.2.200123](https://github.com/carlosjhr64/super_random/releases)
+* [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 
 ## DESCRIPTION:
@@ -15,14 +16,24 @@ SuperRandom combines five online real random services to create a more perfect r
     super_random = SuperRandom.new # => #<SuperRandom:...
 
     # bytes returns 32 bytes by default (256 bits).
-    super_random.bytes # => [123, 219, 128, ...,  248, 164, 100]
+    super_random.bytes #~> ^\[\d+(, \d+){31}\]$
+    # Example:
+    # [142, 36, 107, 199, 1, 222, 69, 238, 130, 159, 236, 201, 199,
+    #   33, 237, 166, 189, 166, 95, 246, 111, 103, 113, 126, 27, 31,
+    #  244, 215, 200, 60, 255, 184]
 
     # hexadecimal returns a 32 bytes hexadecimal by default.
-    super_random.hexadecimal #=> "2ae...37b"
+    super_random.hexadecimal #~> ^\h{64}$
+    # Example:
+    # "3e0dffe42c08b849dc3c1290e7aa87dff4ad3037b29694136786a4db1e3efab8"
 
     # rand as the typical use
-    super_random.rand #=> 0.16882225652425537
-    super_random.rand(100) #=> 85
+    super_random.rand #~> ^0\.\d+$
+    # Example:
+    # 0.16882225652425537
+    super_random.rand(100) #~> ^\d{1,2}$
+    # Example:
+    # 85
 
     # The "services" attribute gives the number of online services used.
     # It's possible for a service to fail.
@@ -37,7 +48,7 @@ SuperRandom combines five online real random services to create a more perfect r
 
 (The MIT License)
 
-Copyright (c) 2017 carlosjhr64
+Copyright (c) 2020 carlosjhr64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
