@@ -127,7 +127,7 @@ class SuperRandom
     bytes(n).map{|i|i.to_s(16).rjust(2,'0')}.join
   end
 
-  def rand(scale=1.0, minbytes=6, maxbytes=[minbytes,DEFAULT_BYTES].max)
+  def random_number(scale=1.0, minbytes=6, maxbytes=[minbytes,DEFAULT_BYTES].max)
     case scale
     when Float
       div = minbytes.times.inject(''){|s,i| s+'FF'}.to_i(16)
@@ -161,5 +161,5 @@ class SuperRandom
     end
     raise "rand(scale Integer|Float)"
   end
-  alias random_number rand
+  alias rand random_number
 end

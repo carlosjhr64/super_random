@@ -12,26 +12,24 @@ SuperRandom combines five online real random services to create a more perfect r
 
 ## SYNOPSIS:
 
-    require 'super_random' #=> true
-    super_random = SuperRandom.new # => #<SuperRandom:...
+    require 'super_random'
+    super_random = SuperRandom.new
 
-    # bytes returns 32 bytes by default (256 bits).
-    super_random.bytes #~> ^\[\d+(, \d+){31}\]$
+    super_random.bytes(32) #~> ^\[\d+(, \d+){31}\]$
     # Example:
     # [142, 36, 107, 199, 1, 222, 69, 238, 130, 159, 236, 201, 199,
     #   33, 237, 166, 189, 166, 95, 246, 111, 103, 113, 126, 27, 31,
     #  244, 215, 200, 60, 255, 184]
 
-    # hexadecimal returns a 32 bytes hexadecimal by default.
-    super_random.hexadecimal #~> ^\h{64}$
+    super_random.hexadecimal(32) #~> ^\h{64}$
     # Example:
     # "3e0dffe42c08b849dc3c1290e7aa87dff4ad3037b29694136786a4db1e3efab8"
 
-    # rand as the typical use
-    super_random.rand #~> ^0\.\d+$
+    super_random.random_number(100.0) #~> ^\d{1,2}\.\d+$
     # Example:
-    # 0.16882225652425537
-    super_random.rand(100) #~> ^\d{1,2}$
+    # 16.882225652425537
+
+    super_random.random_number(100) #~> ^\d{1,2}$
     # Example:
     # 85
 
