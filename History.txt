@@ -15,3 +15,5 @@ aa50c24135172cd90c9600bc65c5f299  pkg/super_random-0.0.1.gem
 1b89e83eefe2cd52dc6b583f1192148e  pkg/super_random-1.0.0.gem
 === 1.1.0 / 2019-12-18 17:06:03 -0800
 42e7123fd6e7f00f3008341e7dc0d1e5  pkg/super_random-1.1.0.gem
+# 1.2.200123 / 2020-01-23 17:40:14 -0800
+ced371a20480cbb400d2e471f1a304bc  pkg/super_random-1.2.200123.gem
