@@ -1,0 +1,22 @@
+#! ruby
+require 'test/unit'
+require 'super_random'
+
+class TestRandomNumber < Test::Unit::TestCase
+  def test_random_number
+    super_random = SuperRandom.new
+
+    sleep 1.0 # rate limiting...
+    number = super_random.random_number 100.0
+    assert number.is_a? Float
+    assert number < 100.0
+    assert number > 0.0
+    assert (number - number.to_i) > 0.0 # Numbers like 55.0 very unlikely!
+
+    sleep 1.0 # rate limiting...
+    number = super_random.random_number 100
+    assert number.is_a? Integer
+    assert number < 100
+    assert number >= 0
+  end
+end
