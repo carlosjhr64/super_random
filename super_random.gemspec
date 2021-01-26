@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = <<DESCRIPTION
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines five online real random services to create a more perfect random byte.
+SuperRandom combines three online real random services to create a more perfect random byte.
 DESCRIPTION
 
   s.summary = <<SUMMARY
@@ -25,9 +25,10 @@ SUMMARY
   s.files = %w(
 README.md
 lib/super_random.rb
-lib/super_random/super_random.rb
+lib/super_random/generator.rb
+lib/super_random/services.rb
   )
 
-  s.requirements << 'ruby: ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux]'
+  s.requirements << 'ruby: ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]'
 
 end
