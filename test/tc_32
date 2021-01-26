@@ -8,7 +8,7 @@ class TestSuperRandom < Test::Unit::TestCase
     sleep 1.0 # rate limiting...
     bytes = super_random.bytes
     assert_equal 32, bytes.length, 'Default number of  bytes:'
-    assert_equal 5, super_random.services, 'Number of services:'
-    assert_equal 4.25, super_random.randomness, 'Measure of "hyper" radomness:'
+    assert_equal 3, super_random.services, 'Number of services:'
+    assert_equal 3.0, super_random.randomness, 'Measure of "hyper" radomness:'
   end
 end

@@ -1,15 +1,15 @@
-class SuperRandom
-  VERSION = '1.2.200123'
-end
-
 # Standard Libraries
 require 'timeout'
 require 'securerandom'
 require 'net/http'
 require 'json'
 
-# This Gem
-require 'super_random/super_random.rb'
+class SuperRandom
+  VERSION = '2.0.210126'
+  # This Gem
+  require 'super_random/services'
+  require 'super_random/generator'
+end
 
 # Requires:
 #`ruby`
