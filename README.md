@@ -4,6 +4,16 @@
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 
+## Deprecation notice:
+
+I'm no longer maintaining this project.
+Although as of the end of 2022 the code still works perfectly,
+one of the true random services
+is moving to an authenticated service(key required),
+and another is being retired.
+
+This was always just a fun and facetious project.
+
 ## DESCRIPTION:
 
 You can't get more random than random, but you can try really, really, really hard.
