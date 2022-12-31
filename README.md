@@ -1,6 +1,6 @@
 # SuperRandom
 
-* [VERSION 2.0.210126](https://github.com/carlosjhr64/super_random/releases)
+* [VERSION 2.0.221231](https://github.com/carlosjhr64/super_random/releases)
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 
@@ -52,7 +52,7 @@ super_random.randomness #=> 3.0
 
 (The MIT License)
 
-Copyright (c) 2021 carlosjhr64
+Copyright (c) 2022 carlosjhr64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

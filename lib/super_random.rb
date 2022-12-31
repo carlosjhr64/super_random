@@ -5,7 +5,7 @@ require 'net/http'
 require 'json'
 
 class SuperRandom
-  VERSION = '2.0.210126'
+  VERSION = '2.0.221231'
   # This Gem
   require 'super_random/services'
   require 'super_random/generator'
