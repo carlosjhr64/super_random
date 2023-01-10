@@ -1,31 +1,20 @@
 # SuperRandom
 
-* [VERSION 2.0.221231](https://github.com/carlosjhr64/super_random/releases)
+* [VERSION 3.0.230110](https://github.com/carlosjhr64/super_random/releases)
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
-
-## Deprecation notice:
-
-I'm no longer maintaining this project.
-Although as of the end of 2022 the code still works perfectly,
-one of the true random services
-is moving to an authenticated service(key required),
-and another is being retired.
-
-This was always just a fun and facetious project.
 
 ## DESCRIPTION:
 
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines three online real random services to create a more perfect random byte.
+`SuperRandom` combines sources of entropy to generate super-random bytes!
 
 ## INSTALL:
 
     $ gem install super_random
 
 ## SYNOPSIS:
-
 ```ruby
 require 'super_random'
 super_random = SuperRandom.new
@@ -57,7 +46,6 @@ super_random.random_number(100) #~> ^\d{1,2}$
 super_random.services   #=> 3
 super_random.randomness #=> 3.0
 ```
-
 ## LICENSE:
 
 (The MIT License)
