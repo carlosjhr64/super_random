@@ -14,37 +14,40 @@ You can't get more random than random, but you can try really, really, really ha
 
     $ gem install super_random
 
+## Intended usage:
+
+`SuperRandom` uses `Digest#SHA2.new(512)` to digest your entropy sources.
+And uses `OpenUri` to read your sources.
+It's only meant to be used sparingly as there's no point in
+re-reading sources that may just change daily.
+To keep things nice, `SuperRandom` has a hard coded rate limit of one minute.
+More frequent calls just make use of `SecureRandom` on top of previous results.
+
 ## SYNOPSIS:
 ```ruby
 require 'super_random'
+SuperRandom::VERSION              #=> "3.0.230110"
 super_random = SuperRandom.new
-
-super_random.bytes(32) #~> ^\[\d+(, \d+){31}\]$
-# Example:
-# [142, 36, 107, 199, 1, 222, 69, 238, 130, 159, 236, 201, 199,
-#   33, 237, 166, 189, 166, 95, 246, 111, 103, 113, 126, 27, 31,
-#  244, 215, 200, 60, 255, 184]
-
-sleep 1 # rate limit to be nice
-super_random.hexadecimal(32) #~> ^\h{64}$
-# Example:
-# "3e0dffe42c08b849dc3c1290e7aa87dff4ad3037b29694136786a4db1e3efab8"
-
-sleep 1
+super_random.sources
+#=> ["https://news.google.com", "https://news.yahoo.com", "https://nytimes.com"]
+super_random.bytes                #~> ^\[\d+(, \d+){63}\]$
+# The `source_count` attribute gives the number of sources successfully used.
+# It's possible for a source to fail.
+# Ultimately, `SuperRandom` uses `SecureRandom` as a failsafe.
+super_random.source_count         #=> 3
+# The `byte_count` attribute gives the total bytes digested from sources.
+super_random.byte_count           #~> ^\d+$
+super_random.hexadecimal          #~> ^\h{128}$
 super_random.random_number(100.0) #~> ^\d{1,2}\.\d+$
-# Example:
-# 16.882225652425537
-
-sleep 1
-super_random.random_number(100) #~> ^\d{1,2}$
-# Example:
-# 85
-
-# The "services" attribute gives the number of online services used.
-# It's possible for a service to fail.
-# Ultimately, SuperRandom uses SecureRandom as a failsafe.
-super_random.services   #=> 3
-super_random.randomness #=> 3.0
+super_random.random_number(100)   #~> ^\d{1,2}$
+# There's a hard coded rate limit of 1 minute for accessing sources
+# so the immediate subsequent source counts are zero.
+super_random.source_count         #=> 0
+super_random.byte_count           #=> 0
+# You can specify your own sources.
+# Snapshots from your webcam can be a good source:
+super_random = SuperRandom.new('/var/lib/motion/lastsnap.jpg')
+super_random.sources #=> ["/var/lib/motion/lastsnap.jpg"]
 ```
 ## LICENSE:
 

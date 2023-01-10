@@ -16,7 +16,7 @@ class SuperRandom
   MUTEX = Mutex.new
   DIV = 128.times.inject(''){|h,_|h<<'f'}.to_i(16)
   RATE_LIMIT = 60 # One minute, be nice!
-  @@LAST_TIME = Time.now.to_i - RATE_LIMIT
+  @@LAST_TIME = Time.now.to_i - RATE_LIMIT - 1
 
   attr_accessor :first_timeout, :second_timeout, :nevermind
   attr_reader   :sources, :source_count, :byte_count
