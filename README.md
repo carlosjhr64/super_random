@@ -62,7 +62,7 @@ super_random.randomness #=> 3.0
 
 (The MIT License)
 
-Copyright (c) 2022 carlosjhr64
+Copyright (c) 2023 carlosjhr64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
