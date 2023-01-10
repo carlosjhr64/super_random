@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 
   s.homepage = 'https://github.com/carlosjhr64/super_random'
 
-  s.author   = 'carlosjhr64'
+  s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
   s.date     = '2023-01-10'
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = <<DESCRIPTION
 You can't get more random than random, but you can try really, really, really hard.
 
-SuperRandom combines three online real random services to create a more perfect random byte.
+`SuperRandom` combines sources of entropy to generate super-random bytes!
 DESCRIPTION
 
   s.summary = <<SUMMARY
@@ -25,8 +25,6 @@ SUMMARY
   s.files = %w(
 README.md
 lib/super_random.rb
-lib/super_random/generator.rb
-lib/super_random/services.rb
   )
 
   s.requirements << 'ruby: ruby 3.2.0 (2022-12-25 revision a528908271) [aarch64-linux]'
