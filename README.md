@@ -21,7 +21,7 @@ And uses `OpenUri` to read your sources.
 It's only meant to be used sparingly as there's no point in
 re-reading sources that may just change daily.
 To keep things nice, `SuperRandom` has a hard coded rate limit of one minute.
-More frequent calls just make use of `SecureRandom` on top of previous results.
+More frequent calls just uses `SecureRandom` on top of previous results.
 
 ## SYNOPSIS:
 ```ruby
