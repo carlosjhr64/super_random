@@ -2,13 +2,13 @@
 require 'test/unit'
 require 'super_random'
 
-class TestSuperRandom < Test::Unit::TestCase
-  def test_64
+class TestBytes < Test::Unit::TestCase
+  def test_64_bytes
     super_random = SuperRandom.new
     sleep 1.0 # rate limiting...
     bytes = super_random.bytes
     assert_equal 64, bytes.length, 'Number of  bytes:'
-    assert_equal 3, super_random.source_count, 'Number of sources:'
-    assert super_random.byte_count > 100_000
+    assert_equal 1, super_random.source_count, 'Number of sources:'
+    assert_equal 210, super_random.byte_count, 'Byte count:'
   end
 end

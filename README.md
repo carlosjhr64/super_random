@@ -25,7 +25,7 @@ super_random.bytes                #~> ^\[\d+(, \d+){63}\]$
 # The source_count attribute gives the number of sources successfully used.
 super_random.source_count         #=> 1
 # The byte_count attribute gives the total bytes digested from sources.
-super_random.byte_count           #-> 220
+super_random.byte_count           #=> 210
 super_random.hexadecimal          #~> ^\h{128}$
 super_random.random_number(100.0) #~> ^\d{1,2}\.\d+$
 super_random.random_number(100)   #~> ^\d{1,2}$

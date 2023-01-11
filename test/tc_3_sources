@@ -1,0 +1,16 @@
+#! ruby
+require 'test/unit'
+require 'super_random'
+
+class TestSources < Test::Unit::TestCase
+  def test_3_sources
+    super_random = SuperRandom.new
+    super_random.sources.append 'https://wttr.in'
+    super_random.sources.append 'https://coinmarketcap.com'
+    sleep 1.0 # rate limiting...
+    bytes = super_random.bytes
+    assert_equal 64, bytes.length, 'Number of  bytes:'
+    assert_equal 3, super_random.source_count, 'Number of sources:'
+    assert super_random.byte_count > 200_000
+  end
+end
