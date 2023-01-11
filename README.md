@@ -1,6 +1,6 @@
 # SuperRandom
 
-* [VERSION 3.0.230110](https://github.com/carlosjhr64/super_random/releases)
+* [VERSION 3.0.230111](https://github.com/carlosjhr64/super_random/releases)
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 
@@ -26,7 +26,7 @@ More frequent calls just uses `SecureRandom` on top of previous results.
 ## SYNOPSIS:
 ```ruby
 require 'super_random'
-SuperRandom::VERSION              #=> "3.0.230110"
+SuperRandom::VERSION              #=> "3.0.230111"
 super_random = SuperRandom.new
 super_random.sources
 #=> ["https://news.google.com", "https://news.yahoo.com", "https://nytimes.com"]

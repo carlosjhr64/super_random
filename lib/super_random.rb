@@ -6,11 +6,9 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.0.230110'
+  VERSION = '3.0.230111'
   DEFAULT_SOURCES = [
-    'https://news.google.com',
-    'https://news.yahoo.com',
-    'https://nytimes.com',
+    'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
   SHASUM = Digest::SHA2.new(512)
   MUTEX = Mutex.new
@@ -30,7 +28,8 @@ class SuperRandom
   def bytes
     @byte_count,@source_count = 0,0
     _do_updates if Time.now.to_i - @@LAST_TIME > RATE_LIMIT
-    SHASUM.digest.chars.map{(_1.ord + SecureRandom.random_number(256))%256}
+    SHASUM.update SecureRandom.bytes(64)
+    SHASUM.digest.chars.map{_1.ord}
   end
 
   def hexadecimal
