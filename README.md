@@ -14,40 +14,67 @@ You can't get more random than random, but you can try really, really, really ha
 
     $ gem install super_random
 
-## Intended usage:
-
-`SuperRandom` uses `Digest#SHA2.new(512)` to digest your entropy sources.
-And uses `OpenUri` to read your sources.
-It's only meant to be used sparingly as there's no point in
-re-reading sources that may just change daily.
-To keep things nice, `SuperRandom` has a hard coded rate limit of one minute.
-More frequent calls just uses `SecureRandom` on top of previous results.
-
 ## SYNOPSIS:
 ```ruby
 require 'super_random'
 SuperRandom::VERSION              #=> "3.0.230111"
+SuperRandom::DEFAULT_SOURCES      #~> www.random.org
 super_random = SuperRandom.new
-super_random.sources
-#=> ["https://news.google.com", "https://news.yahoo.com", "https://nytimes.com"]
+super_random.sources              #~> www.random.org
 super_random.bytes                #~> ^\[\d+(, \d+){63}\]$
-# The `source_count` attribute gives the number of sources successfully used.
-# It's possible for a source to fail.
-# Ultimately, `SuperRandom` uses `SecureRandom` as a failsafe.
-super_random.source_count         #=> 3
-# The `byte_count` attribute gives the total bytes digested from sources.
-super_random.byte_count           #~> ^\d+$
+# The source_count attribute gives the number of sources successfully used.
+super_random.source_count         #=> 1
+# The byte_count attribute gives the total bytes digested from sources.
+super_random.byte_count           #-> 220
 super_random.hexadecimal          #~> ^\h{128}$
 super_random.random_number(100.0) #~> ^\d{1,2}\.\d+$
 super_random.random_number(100)   #~> ^\d{1,2}$
-# There's a hard coded rate limit of 1 minute for accessing sources
-# so the immediate subsequent source counts are zero.
+# Because of a 1 minute rate limit, subsequent source counts are zero:
 super_random.source_count         #=> 0
 super_random.byte_count           #=> 0
-# You can specify your own sources.
-# Snapshots from your webcam can be a good source:
+# Snapshots from your webcam can be a good entropy source:
 super_random = SuperRandom.new('/var/lib/motion/lastsnap.jpg')
 super_random.sources #=> ["/var/lib/motion/lastsnap.jpg"]
+```
+## METHODOLOGY:
+
+`SuperRandom` uses `OpenUri` to read your sources, which
+can be http, https, or ftp URLs.
+`Digest::SHA2.new(512)` is used to digest your sources.
+Finally, `SecureRandom.bytes` are fed to the digest as a fail safe.
+This generates the final 64 random bytes.
+
+## SOURCES:
+
+I could only find one good source expressly for this purpose, `www.random.org`.
+Another good one is `qrng.anu.edu.au`, but you'll need an API key.
+Consider using:
+
+* Snapshots from your webcam
+* List of market spot prices
+* Weather forecasts
+* News or micro-logging feeds
+
+Be very nice about your calls,
+specially when you're not using the source as intended.
+`SuperRandom` enforces a one minute rate limit in the use of sources.
+Here are ways to set custom sources:
+```ruby
+# Sources specified in the constructor: 
+super_random = SuperRandom.new('/var/lib/motion/lastsnap.jpg', 'https://wttr.in')
+super_random.sources
+#=> ["/var/lib/motion/lastsnap.jpg", "https://wttr.in"]
+
+# Sources appended on the instance: 
+super_random.sources.append 'https://text.npr.org'
+super_random.sources
+#=> ["/var/lib/motion/lastsnap.jpg", "https://wttr.in", "https://text.npr.org"]
+
+# Sources appended to the DEFAULT_SOURCES
+SuperRandom::DEFAULT_SOURCES.append 'https://coinmarketcap.com'
+super_random = SuperRandom.new
+super_random.sources
+#~> random.org.*coinmarketcap.com
 ```
 ## LICENSE:
 
