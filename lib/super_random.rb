@@ -6,11 +6,10 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.0.230111'
+  VERSION = '3.0.230112'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
-  SHASUM = Digest::SHA2.new(512)
   MUTEX = Mutex.new
   DIV = 128.times.inject(''){|h,_|h<<'f'}.to_i(16)
   RATE_LIMIT = 60 # One minute, be nice!
@@ -28,8 +27,7 @@ class SuperRandom
   def bytes
     @byte_count,@source_count = 0,0
     _do_updates if Time.now.to_i - @@LAST_TIME > RATE_LIMIT
-    SHASUM.update SecureRandom.bytes(64)
-    SHASUM.digest.chars.map{_1.ord}
+    _get_bytes
   end
 
   def hexadecimal
@@ -48,6 +46,16 @@ class SuperRandom
   alias rand random_number
 
   private
+
+  SHASUM = Digest::SHA2.new(512)
+  def _get_bytes
+    MUTEX.synchronize do
+      SHASUM.update SecureRandom.bytes(64)
+      SHASUM.digest.chars.map{_1.ord}
+    end
+  ensure
+    SHASUM.update SecureRandom.bytes(64)
+  end
 
   def _update_with(source)
     URI.open(source) do |tmp|

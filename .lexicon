@@ -21,6 +21,7 @@ Error
 exit
 first_timeout
 Float
+_get_bytes
 h
 hexadecimal
 initialize
