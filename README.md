@@ -1,6 +1,6 @@
 # SuperRandom
 
-* [VERSION 3.0.230112](https://github.com/carlosjhr64/super_random/releases)
+* [VERSION 3.0.230113](https://github.com/carlosjhr64/super_random/releases)
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 
@@ -17,7 +17,7 @@ You can't get more random than random, but you can try really, really, really ha
 ## SYNOPSIS:
 ```ruby
 require 'super_random'
-SuperRandom::VERSION              #=> "3.0.230112"
+SuperRandom::VERSION              #=> "3.0.230113"
 SuperRandom::DEFAULT_SOURCES      #~> www.random.org
 super_random = SuperRandom.new
 super_random.sources              #~> www.random.org

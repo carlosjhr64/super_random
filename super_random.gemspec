@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
 
   s.name     = 'super_random'
-  s.version  = '3.0.230112'
+  s.version  = '3.0.230113'
 
   s.homepage = 'https://github.com/carlosjhr64/super_random'
 
   s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2023-01-12'
+  s.date     = '2023-01-13'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION

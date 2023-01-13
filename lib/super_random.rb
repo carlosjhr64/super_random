@@ -6,7 +6,7 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.0.230112'
+  VERSION = '3.0.230113'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
@@ -54,7 +54,7 @@ class SuperRandom
       SHASUM.digest.chars.map{_1.ord}
     end
   ensure
-    SHASUM.update SecureRandom.bytes(64)
+    MUTEX.synchronize{SHASUM.update SecureRandom.bytes(64)}
   end
 
   def _update_with(source)
