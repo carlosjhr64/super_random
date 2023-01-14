@@ -34,7 +34,10 @@ super_random.source_count         #=> 0
 super_random.byte_count           #=> 0
 # Snapshots from your webcam can be a good entropy source:
 super_random = SuperRandom.new('/var/lib/motion/lastsnap.jpg')
-super_random.sources #=> ["/var/lib/motion/lastsnap.jpg"]
+super_random.sources              #=> ["/var/lib/motion/lastsnap.jpg"]
+# Dice!
+d6 = super_random.dice(6)
+d6.roll                           #~> ^[123456]$
 ```
 ## METHODOLOGY:
 
