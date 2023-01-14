@@ -6,7 +6,7 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.0.230113'
+  VERSION = '3.1.230114'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
@@ -34,12 +34,16 @@ class SuperRandom
     bytes.map{_1.to_s(16).rjust(2,'0')}.join
   end
 
+  def integer
+    hexadecimal.to_i(16)
+  end
+
   def random_number(scale=1.0)
     case scale
     when Float
-      return scale * Rational(hexadecimal.to_i(16), DIV)
+      return scale * Rational(integer, DIV)
     when Integer
-      return ((hexadecimal.to_i(16) + SecureRandom.random_number(scale)) % scale)
+      return ((integer + SecureRandom.random_number(scale)) % scale)
     end
     raise "rand(scale Integer|Float)"
   end
