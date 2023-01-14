@@ -42,6 +42,19 @@ class SuperRandom
     Rational(integer, DIV).to_f
   end
 
+  def float2
+    # An alternate way to generate a float but...
+    hex = hexadecimal
+    x = hex[0...64].to_i(16)
+    y = hex[64..128].to_i(16)
+    # ...what distribution is this?
+    Rational(x,y).to_f
+  rescue ZeroDivisionError
+    # Fat chance!
+    return 0 if x == 0
+    1.0/0.0
+  end
+
   def random_number(scale=1.0)
     case scale
     when Float
