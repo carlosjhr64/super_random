@@ -9,6 +9,7 @@ coinmarketcap
 com
 def
 DIV
+divmod
 dup
 edu
 github
@@ -30,6 +31,7 @@ qrng
 rand
 rjust
 rnd
+rng
 rubygems
 securerandom
 SecureRandom

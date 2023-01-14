@@ -38,16 +38,39 @@ class SuperRandom
     hexadecimal.to_i(16)
   end
 
+  def float
+    Rational(integer, DIV).to_f
+  end
+
   def random_number(scale=1.0)
     case scale
     when Float
-      return scale * Rational(integer, DIV)
+      return scale * float
     when Integer
       return ((integer + SecureRandom.random_number(scale)) % scale)
     end
     raise "rand(scale Integer|Float)"
   end
   alias rand random_number
+
+  class Dice
+    private def set_big
+      @big = @rng.integer + SecureRandom.random_number(@sides)
+    end
+    def initialize(sides, minimum:1, rng:SuperRandom.new)
+      @sides,@minimum,@rng = sides,minimum,rng
+      set_big
+    end
+    def roll
+      @big,roll = @big.divmod(@sides)
+      return roll+@minimum
+    ensure
+      set_big unless @big>0
+    end
+  end
+  def dice(sides, minimum:1)
+    Dice.new(sides, minimum:minimum, rng:self)
+  end
 
   private
 
