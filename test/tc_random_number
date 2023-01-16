@@ -3,20 +3,40 @@ require 'test/unit'
 require 'super_random'
 
 class TestRandomNumber < Test::Unit::TestCase
-  def test_random_number
-    super_random = SuperRandom.new
+  RNG = SuperRandom.new('/var/lib/motion/lastsnap.jpg')
 
-    sleep 1.0 # rate limiting...
-    number = super_random.random_number 100.0
+  def test_random_number
+    number = RNG.random_number 100.0
     assert number.is_a? Float
     assert number < 100.0
     assert number > 0.0
     assert (number - number.to_i) > 0.0 # Numbers like 55.0 very unlikely!
 
-    sleep 1.0 # rate limiting...
-    number = super_random.random_number 100
+    number = RNG.random_number 100
     assert number.is_a? Integer
     assert number < 100
     assert number >= 0
+
+    x,y = RNG.xy
+    assert x.is_a? Integer
+    assert y.is_a? Integer
+    refute x==y # Fat chance
+
+    i = RNG.integer
+    assert i.is_a? Integer
+    assert i > 0 # Fat chance of it being 0
+
+    i2 = RNG.integer2
+    assert i2.is_a? Integer
+    refute i==0 # Fat chance
+
+    f = RNG.float
+    assert f.is_a? Float
+    assert f > 0.0 # Fat chance of it being 0.0
+    assert f < 1.0 # Fat chance of it being 1.0
+
+    f2 = RNG.float2
+    assert f2.is_a? Float
+    assert f2 > 0.0 # Fat chance of it being 0
   end
 end

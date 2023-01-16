@@ -6,7 +6,7 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.1.230114'
+  VERSION = '3.2.230116'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
@@ -38,16 +38,28 @@ class SuperRandom
     hexadecimal.to_i(16)
   end
 
+  def xy
+    hex = hexadecimal
+    x = hex[0...64].to_i(16)
+    y = hex[64..128].to_i(16)
+    return x,y
+  end
+
+  def integer2
+    # An alternate way to generate an integer
+    x,y = xy
+    # I think this is Binomial(Gaussian in the limit) around zero?
+    x - y
+  end
+
   def float
     Rational(integer, DIV).to_f
   end
 
   def float2
-    # An alternate way to generate a float but...
-    hex = hexadecimal
-    x = hex[0...64].to_i(16)
-    y = hex[64..128].to_i(16)
-    # ...what distribution is this?
+    # An alternate way to generate a float...
+    x,y = xy
+    # ...but what distribution is this?
     Rational(x,y).to_f
   rescue ZeroDivisionError
     # Fat chance!

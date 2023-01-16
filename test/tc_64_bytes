@@ -4,8 +4,10 @@ require 'super_random'
 
 class TestBytes < Test::Unit::TestCase
   def test_64_bytes
+    sleep 1 # Rate limit HTTP sources
+
     super_random = SuperRandom.new
-    sleep 1.0 # rate limiting...
+
     bytes = super_random.bytes
     assert_equal 64, bytes.length, 'Number of  bytes:'
     assert_equal 1, super_random.source_count, 'Number of sources:'
