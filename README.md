@@ -1,6 +1,6 @@
 # SuperRandom
 
-* [VERSION 3.2.230116](https://github.com/carlosjhr64/super_random/releases)
+* [VERSION 3.2.230118](https://github.com/carlosjhr64/super_random/releases)
 * [github](https://github.com/carlosjhr64/super_random)
 * [rubygems](https://rubygems.org/gems/super_random)
 

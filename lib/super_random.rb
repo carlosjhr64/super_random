@@ -6,7 +6,7 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.2.230116'
+  VERSION = '3.2.230118'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]
@@ -60,11 +60,7 @@ class SuperRandom
     # An alternate way to generate a float...
     x,y = xy
     # ...but what distribution is this?
-    Rational(x,y).to_f
-  rescue ZeroDivisionError
-    # Fat chance!
-    return 0 if x == 0
-    1.0/0.0
+    Rational(x+1,y+1).to_f
   end
 
   def random_number(scale=1.0)
