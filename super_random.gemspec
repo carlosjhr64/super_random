@@ -24,5 +24,11 @@ Gem::Specification.new do |s|
   ]
   
   ## REQUIREMENTS ##
+  s.add_development_dependency 'colorize', '~> 0.8', '>= 0.8.1'
+  s.add_development_dependency 'cucumber', '~> 8.0', '>= 8.0.0'
+  s.add_development_dependency 'help_parser', '~> 8.2', '>= 8.2.230210'
+  s.add_development_dependency 'rubocop', '~> 1.45', '>= 1.45.1'
+  s.add_development_dependency 'test-unit', '~> 3.5', '>= 3.5.7'
+  s.requirements << 'git: 2.30'
   s.requirements << 'ruby: 3.2'
 end
