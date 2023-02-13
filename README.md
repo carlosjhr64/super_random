@@ -17,7 +17,7 @@ You can't get more random than random, but you can try really, really, really ha
 ## SYNOPSIS:
 ```ruby
 require 'super_random'
-SuperRandom::VERSION              #=> "3.2.230118"
+SuperRandom::VERSION              #~> ^3.\d+.\d+$
 SuperRandom::DEFAULT_SOURCES      #~> www.random.org
 super_random = SuperRandom.new
 super_random.sources              #~> www.random.org

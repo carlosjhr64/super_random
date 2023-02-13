@@ -42,6 +42,8 @@ Layout/SpaceInsideBlockBraces:
   Enabled: false
 Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
 Lint/AmbiguousOperatorPrecedence:
   Enabled: false
 Lint/AmbiguousRegexpLiteral:
@@ -80,9 +82,15 @@ Naming/MethodParameterName:
   Enabled: false
 Naming/MemoizedInstanceVariableName:
   Enabled: false
+Security/Open:
+  Enabled: false
+Style/AccessModifierDeclarations:
+  Enabled: false
 Style/BlockComments:
   Enabled: false
 Style/CaseEquality:
+  Enabled: false
+Style/ClassVars:
   Enabled: false
 Style/Documentation:
   Enabled: false

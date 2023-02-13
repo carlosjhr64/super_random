@@ -28,6 +28,7 @@ Float
 float2
 _get_bytes
 h
+HelpParser
 hex
 hexadecimal
 initialize
@@ -38,6 +39,7 @@ integer2
 join
 line
 map
+message
 minimum
 Mutex
 MUTEX
@@ -45,11 +47,12 @@ nevermind
 new
 now
 open
+options
 ord
 pass
+positive
 private
 push
-puts
 raise
 rand
 random_number
@@ -59,6 +62,7 @@ require
 rjust
 rng
 roll
+Ruby32
 s
 scale
 second_timeout
@@ -70,6 +74,7 @@ sides
 source
 source_count
 sources
+start
 SuperRandom
 sychronize
 synchronize
@@ -88,6 +93,8 @@ update
 _update_with
 URI
 VERSION
+warn
 x
 xy
 y
+zero

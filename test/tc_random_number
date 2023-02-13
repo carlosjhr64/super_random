@@ -1,4 +1,4 @@
-#! ruby
+#!/usr/bin/env ruby
 require 'test/unit'
 require 'super_random'
 
@@ -24,11 +24,11 @@ class TestRandomNumber < Test::Unit::TestCase
 
     i = RNG.integer
     assert i.is_a? Integer
-    assert i > 0 # Fat chance of it being 0
+    assert i.positive? # Fat chance of it being 0
 
     i2 = RNG.integer2
     assert i2.is_a? Integer
-    refute i==0 # Fat chance
+    refute i.zero? # Fat chance
 
     f = RNG.float
     assert f.is_a? Float
