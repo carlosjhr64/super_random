@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+require 'test/unit'
+require 'super_random'
+
+class SuperRandom
+  attr_accessor :wait1,:wait2
+
+  alias _previous_update_with _update_with
+  def _update_with(source)
+    seconds = /random.org/.match?(source) ? wait1 : wait2
+    sleep seconds
+    _previous_update_with source
+  end
+end
+
+# Just a quick test to see if @first_timeout is working.
+class TestTimeout < Test::Unit::TestCase
+  def test_timeout
+    sleep 1 # Rate limit HTTP sources
+
+    super_random = SuperRandom.new
+    super_random.sources.append 'https://wttr.in'
+    super_random.sources.append 'https://coinmarketcap.com'
+
+    t1 = super_random.first_timeout
+    t2 = super_random.second_timeout
+    super_random.wait1 = t1+1
+    super_random.wait2 = t1+t2+1
+
+    bytes = super_random.bytes
+    assert_equal 64, bytes.length, 'Number of  bytes:'
+    assert_equal 1, super_random.source_count, 'Number of sources:'
+    assert_equal 210, super_random.byte_count, 'Byte count:'
+  end
+end

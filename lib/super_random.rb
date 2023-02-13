@@ -23,7 +23,7 @@ class SuperRandom
   def initialize(*sources)
     @sources = sources.empty? ? DEFAULT_SOURCES.dup : sources
     @byte_count,@source_count = 0,0
-    @first_timeout,@second_timeout,@nevermind = 3,6,true
+    @first_timeout,@second_timeout,@nevermind = 3,3,true
   end
 
   # Returns 64 random bytes(at least from SecureRandom's)
@@ -137,7 +137,7 @@ class SuperRandom
           Thread.pass while @source_count.zero? && threads.any?(&:alive?)
         end
       rescue Timeout::Error
-        Mutex.sychronize{threads.each(&:exit)} # Exit each thread
+        MUTEX.synchronize{threads.each(&:exit)} # Exit each thread
         raise $! unless @nevermind # Go on if never-minding
       end
     end
