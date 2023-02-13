@@ -6,7 +6,7 @@ require 'digest'
 #`ruby`
 
 class SuperRandom
-  VERSION = '3.2.230118'
+  VERSION = '3.2.230213'
   DEFAULT_SOURCES = [
     'https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new',
   ]

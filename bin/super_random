@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'help_parser'
+require 'super_random'
+
+SuperRandom.start HelpParser[SuperRandom::VERSION, <<~HELP]
+  ## SuperRandom ##
+  Usage:
+    super_random [:options+]
+  Options:
+    -h --help
+    -v --version
+HELP
