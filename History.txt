@@ -33,3 +33,5 @@ dd2aa8a7e49f5dcaa77a97a3c9485522  pkg/super_random-3.0.230113.gem
 ba62e9adb5a35d52be895fdf8f1f0a11  pkg/super_random-3.2.230116.gem
 # 3.2.230118 / 2023-01-18 04:50:01 -0800
 e64e14560a3982d61748328740c88c62  pkg/super_random-3.2.230118.gem
+# 3.2.230213 / 2023-02-13 13:27:31 -0800
+ef572e34cda7c6ff0fc902a0f688dacb  pkg/super_random-3.2.230213.gem
